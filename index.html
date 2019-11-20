@@ -41,6 +41,44 @@
 }
 </style>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script>
+    var vibeState =document.getElementById("vibratorState")
+    var scriptURL = "https://script.google.com/macros/s/AKfycbzDDlbS3E4_sseAubIs4FWplpqaQGzSoRfKXpy_/exec";
+    var app_name = "toSheets";
+    jQuery.ajax({url:scriptURL, data: {
+    "level": 0
+
+    },
+    dataType: "jsonp", // using jsonp to overcome the Same Origin Policy
+    jsonp: "callback",
+    success: function( response ) {
+        if (response.result == "success"){
+            console.log("Current state: " +response.state);
+
+            if (response.state == 0){
+              vibeState.innerHTML = "Offline";
+              vibeState.style.color = "red";
+            }
+            else if (response.state == 1) {
+              vibeState.innerHTML = "Online";
+              vibeState.style.color = "green";
+              }
+            else{
+              vibeState.innerHTML = "error";
+              vibeState.style.color = "red";
+            }
+        }
+        else{
+            console.log('idk, it failed')
+        }
+    }
+});
+
+
+
+
+
+    </script>
     <title>Flaz Vibe Control</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -84,6 +122,7 @@
               <div class="slidecontainer">
                 <input type="range" min="0" max="100" value="0" class="slider" id="myRange">
                 <p>Intensity: <span id="vibeLevel"></span>%</p>
+                <p>Flaz's toy is currently: <span id="vibratorState"></span></p>
               </div>
 
               <script>
@@ -99,6 +138,7 @@
               var output = document.getElementById("vibeLevel");
               var scriptURL = "https://script.google.com/macros/s/AKfycbzDDlbS3E4_sseAubIs4FWplpqaQGzSoRfKXpy_/exec";
               var app_name = "toSheets";
+              var vibeState =document.getElementById("vibratorState")
               output.innerHTML = slider.value;
 
               slider.oninput = function() {
@@ -116,6 +156,21 @@
                   success: function( response ) {
                       if (response.result == "success"){
                           console.log("added to row " + response.row);
+                          console.log("Current state: " +response.state);
+                          
+                          if (response.state == 0){
+                            vibeState.innerHTML = "Offline";
+                            vibeState.style.color = "red";
+                          }
+                          else if (response.state == 1) {
+                            vibeState.innerHTML = "Online";
+                            vibeState.style.color = "green";
+                            }
+                          else{
+                            vibeState.innerHTML = "error";
+                            vibeState.style.color = "red";
+                          }
+
 
                       }
                       else{
