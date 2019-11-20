@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <style>
+  .slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: url('images/hsflazsmol.png');
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: url('images/hsflazsmol.png');
+  cursor: pointer;
+}
+</style>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <title>Flaz Vibe Control</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+		<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" href="css/nouislider.css">
+
+
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+
+  <div class="main-section">
+
+
+
+  	<section class="hero-wrap" style="background-image: url(images/242534.jpg);" data-stellar-background-ratio="0.5">
+  		<div class="overlay"></div>
+  		<div class="container">
+  			<div class="row description align-items-center justify-content-center">
+  				<div class="col-md-8 text-center">
+  					<div class="text">
+  						<h2>Make Flaz Moannnnnn</h2>
+  						<h4 class="mb-5">Adjust the slider below to control her vibrator intensity</h4>
+              <div class="slidecontainer">
+                <input type="range" min="0" max="100" value="0" class="slider" id="myRange">
+                <p>Intensity: <span id="vibeLevel"></span>%</p>
+              </div>
+
+              <script>
+              function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+              var slider = document.getElementById("myRange");
+              var output = document.getElementById("vibeLevel");
+              var scriptURL = "https://script.google.com/macros/s/AKfycbzDDlbS3E4_sseAubIs4FWplpqaQGzSoRfKXpy_/exec";
+              var app_name = "toSheets";
+              output.innerHTML = slider.value;
+
+              slider.oninput = function() {
+                output.innerHTML = this.value;
+                sleep(100)
+              var outputINT = parseInt(output.innerHTML)
+
+                  // the name "id", "Class", "Class Number", "x-coord", "y-coord" must match the header row in the spreadsheet
+                  jQuery.ajax({url:scriptURL, data: {
+                      "level": outputINT
+
+                  },
+                  dataType: "jsonp", // using jsonp to overcome the Same Origin Policy
+                  jsonp: "callback",
+                  success: function( response ) {
+                      if (response.result == "success"){
+                          console.log("added to row " + response.row);
+
+                      }
+                      else{
+                          console.log('idk, it failed')
+                      }
+                  }
+              });
+
+}
+
+              </script>
+
+
+
+
+
+
+
+
+  						<!-- <div class="designed d-inline-block">
+  							<d class="d-flex align-items-center">
+	  							<div class="img" style="background-image: url(images/person.jpg);"></div>
+	  							<div class="ml-3"><p class="mb-0">Designed by: <span>Colorlib.com</span></p></div>
+  							</d>
+  						</div> -->
+  					</div>
+
+  			</div>
+  		</div>
+
+  		<!-- <div class="mouse">
+				<a href="#" class="mouse-icon">
+					<div class="mouse-wheel"><span class="ion-ios-arrow-round-down"></span></div>
+				</a>
+			</div> -->
+  	</section>
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+
+
+  <script src="js/nouislider.min.js"></script>
+  <script src="js/moment-with-locales.min.js"></script>
+  <script src="js/bootstrap-datetimepicker.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/buttplug@0.11.2/dist/web/buttplug.min.js" defer></script>
+  <script src="js/script.js" defer></script>
+
+
+  </body>
+</html>
