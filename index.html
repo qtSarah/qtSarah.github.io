@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<html prefix="og: http://ogp.me/ns#">
   <head>
+
+<meta property="og:title" content="Control Flaz's vibrator uwu" />
+
+
+<meta property="og:image" content="images/hsflaz.png" />
   <style>
   .slidecontainer {
   width: 100%;
@@ -157,7 +163,7 @@
                       if (response.result == "success"){
                           console.log("added to row " + response.row);
                           console.log("Current state: " +response.state);
-                          
+
                           if (response.state == 0){
                             vibeState.innerHTML = "Offline";
                             vibeState.style.color = "red";
